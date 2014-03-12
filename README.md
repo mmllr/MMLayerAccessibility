@@ -16,7 +16,7 @@ So I developed a solution which adds NSAccessibility support to CALayer and all 
 									return strongLayer.string;
 									}];
 ```
-With this method you set an accessibility attribute to a CALayer, the handler block must return a value specific for the attribute (such as a NSString, NSValue, NSArray...see the [NSAccessibility Documentation][2] on Apples developer website.
+With this method you set an accessibility attribute to a CALayer, the handler block must return a value specific for the attribute (such as a NSString, NSValue, NSArray...see the [NSAccessibility Documentation](https://developer.apple.com/librarY/mac/documentation/Cocoa/Conceptual/Accessibility/cocoaAXIntro/cocoaAXintro.html) on Apples developer website.
 
 ```objective-c
 -(void)setWritableAccessibilityAttribute:(NSString*)attribute readBlock:(id(^)(void))getter writeBlock:(void(^)(id value))setter;
@@ -102,8 +102,8 @@ Have a look in the LayerView class of the provided example.
 The library is fully unit tested with [Kiwi](https://github.com/allending/Kiwi) specs.
 ## Usage
 
-To run the example project; clone the repo, and run `pod install` from the Example directory first. Then [enable accessibility in system settings][15] and [start the accessibility inspector][16] afterwards. You can examine you CALayer based ui in the inspector.
-![][image-1]
+To run the example project; clone the repo, and run `pod install` from the Example directory first. Then [enable accessibility in system settings](https://github.com/mmllr/MMLayerAccessibility.git/Resources/enableax.png) and [start the accessibility inspector](https://github.com/mmllr/MMLayerAccessibility.git/Resources/Xcode.png) afterwards. You can [examine](https://github.com/mmllr/MMLayerAccessibility.git/Resources/screenshot01.png) you CALayer based ui in the inspector.
+
 
 ## Requirements
 
@@ -111,7 +111,7 @@ Minimum requirements are Mac OSX 10.7 and ARC.
 
 ## Installation
 
-MMLayerAccessibility is available through [CocoaPods][17], to install
+MMLayerAccessibility is available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
 	pod "MMLayerAccessibility"
@@ -123,10 +123,3 @@ Markus Mueller, mmlr@gmx.net
 ## License
 
 MMLayerAccessibility is available under the MIT license. See the LICENSE file for more info.
-
-[2]:	https://developer.apple.com/librarY/mac/documentation/Cocoa/Conceptual/Accessibility/cocoaAXIntro/cocoaAXintro.html
-[15]:	https://github.com/mmllr/MMLayerAccessibility.git/Resources/enableax.png
-[16]:	https://github.com/mmllr/MMLayerAccessibility.git/Resources/Xcode.png
-[17]:	http://cocoapods.org
-
-[image-1]:	https://github.com/mmllr/MMLayerAccessibility.git/Resources/
