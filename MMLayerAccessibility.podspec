@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = "0.1.0"
   s.summary          = "A framework for adding NSAccessibility support to CALayer"
   s.homepage         = "https://github.com/mmllr/MMLayerAccessibility"
-  s.screenshots      = "https://github.com/mmllr/MMLayerAccessibility/screenshots/screenshot01.png"
+  s.screenshots      = "https://github.com/mmllr/MMLayerAccessibility.git/Resources/screenshot01.png"
   s.license          = 'MIT'
   s.author           = { "Markus Mueller" => "mmlr@gmx.net" }
   s.source           = { :git => "https://github.com/mmllr/MMLayerAccessibility.git", :tag => s.version.to_s }
