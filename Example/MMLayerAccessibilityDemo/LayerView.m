@@ -120,10 +120,11 @@
 	[layer setReadableAccessibilityAttribute:NSAccessibilityRoleAttribute withBlock:^id{
 		return NSAccessibilityTextFieldRole;
 	}];
-	[layer setReadableAccessibilityAttribute:NSAccessibilityTitleAttribute
-								   withBlock:^id{
-									   return weakLayer.string;
-								   }];
+	[layer setWritableAccessibilityAttribute:NSAccessibilityTitleAttribute readBlock:^id{
+		return weakLayer.string;
+	} writeBlock:^(NSString *value) {
+		weakLayer.string = value;
+	}];
 	[layer setReadableAccessibilityAttribute:NSAccessibilityNumberOfCharactersAttribute withBlock:^id{
 		return @([weakLayer.string length]);
 	}];
