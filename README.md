@@ -102,7 +102,12 @@ Have a look in the LayerView class of the provided example.
 The library is fully unit tested with [Kiwi](https://github.com/allending/Kiwi) specs.
 ## Usage
 
-To run the example project; clone the repo, and run `pod install` from the Example directory first. Then [enable accessibility in system settings](https://github.com/mmllr/MMLayerAccessibility/blob/master/Resources/enableax.png) and [start the accessibility inspector](https://github.com/mmllr/MMLayerAccessibility/blob/master/Resources/Xcode.png) afterwards. You can [examine](https://github.com/mmllr/MMLayerAccessibility/blob/master/Resources/screenshot01.png) you CALayer based ui in the inspector.
+To run the example project; clone the repo, and run `pod install` from the Example directory first.  
+Then enable accessibility in system settings and start the accessibility inspector afterwards.  
+![Enable AX](https://raw.github.com/mmllr/MMLayerAccessibility/master/Resources/enableax.png) 
+![AX Inspector](https://raw.github.com/mmllr/MMLayerAccessibility/master/Resources/Xcode.png)
+You can examine your CALayer based ui in the inspector.  
+![examine ui](https://raw.github.com/mmllr/MMLayerAccessibility/master/Resources/screenshot01.png)
 
 
 ## Requirements
