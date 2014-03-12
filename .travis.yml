@@ -3,6 +3,7 @@ rvm: 1.9.3
 env: LC_ALL="en_US.UTF-8"
 before_install:
   - cd Example
+  - gem install cocoapods --no-ri --no-rdoc
   - pod install
   - cd ..
 script: xctool -workspace Example/MMLayerAccessibilityDemo.xcworkspace -scheme MMLayerAccessibilityDemo test
