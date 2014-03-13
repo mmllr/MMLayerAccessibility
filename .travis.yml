@@ -1,4 +1,5 @@
 language: objective-c
+rvm: 1.9.3
 before_install:
   - cd Example
   - gem install cocoapods --no-ri --no-rdoc
