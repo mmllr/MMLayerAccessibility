@@ -1,6 +1,5 @@
 language: objective-c
 rvm: 1.9.3
-env: LC_ALL="en_US.UTF-8"
 before_install:
   - brew update
   - brew install xctool
@@ -8,4 +7,6 @@ before_install:
   - gem install cocoapods --no-ri --no-rdoc
   - pod install
   - cd ..
+env:
+  - XCWORKSPACE="Example/MMLayerAccessibilityDemo.xcworkspace"
 script: xctool -workspace Example/MMLayerAccessibilityDemo.xcworkspace -scheme MMLayerAccessibilityDemo test
