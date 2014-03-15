@@ -38,9 +38,11 @@
 
 - (void)setAccessiblityEnabledLayer:(CALayer*)layer
 {
+	NSParameterAssert(layer);
+
 	objc_setAssociatedObject(layer, kMMLayerAccessibilityParentViewKey, self, OBJC_ASSOCIATION_ASSIGN);
-	[ self setLayer:layer ];
-	[ self setWantsLayer:YES ];
+	[self setLayer:layer];
+	[self setWantsLayer:YES];
 }
 
 @end

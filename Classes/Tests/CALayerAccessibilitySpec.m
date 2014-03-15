@@ -32,12 +32,21 @@
 #import <Kiwi.h>
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
-#import "CALayer+NSAccessibility.h"
+#import <CALayer+NSAccessibility.h>
+#import <CALayer+MMLayerAccessibilityPrivate.h>
 
 SPEC_BEGIN(CALayerAccessibilitySpec)
 
 describe(@"CALayer+NSAccessibility", ^{
 	__block CALayer *sut = nil;
+	__block NSArray *defaultAttributes = nil;
+	beforeAll(^{
+		defaultAttributes = @[NSAccessibilityParentAttribute, NSAccessibilitySizeAttribute, NSAccessibilityPositionAttribute, NSAccessibilityWindowAttribute, NSAccessibilityTopLevelUIElementAttribute, NSAccessibilityRoleAttribute, NSAccessibilityRoleDescriptionAttribute, NSAccessibilityEnabledAttribute, NSAccessibilityFocusedAttribute];
+	});
+	afterAll(^{
+		defaultAttributes = nil;
+	});
+
 	beforeEach(^{
 		sut = [ CALayer layer ];
 	});
@@ -109,6 +118,17 @@ describe(@"CALayer+NSAccessibility", ^{
 					[[theBlock(^{
 						[sut removeAccessibilityAttribute:nil];
 					}) should] raiseWithName:NSInternalInconsistencyException];
+				});
+				it(@"should not remove a build in attribute", ^{
+					NSView *viewMock = [NSView nullMock];
+					NSWindow *windowMock = [NSWindow nullMock];
+					[viewMock stub:@selector(accessibilityAttributeValue:) andReturn:windowMock];
+					[sut stub:@selector(mm_accessibilityParent) andReturn:viewMock];
+
+					for (NSString *attribute in defaultAttributes) {
+						[sut removeAccessibilityAttribute:attribute];
+						[[[sut accessibilityAttributeValue:attribute] shouldNot] beNil];
+					}
 				});
 			});
 			context(@"setAccessibilityAction:withBlock:", ^{
@@ -184,18 +204,11 @@ describe(@"CALayer+NSAccessibility", ^{
 			});
 		});
 		context(@"default attributes", ^{
-			__block NSArray *expectedDefaultAttributes = nil;
-			beforeAll(^{
-				expectedDefaultAttributes = @[NSAccessibilityParentAttribute, NSAccessibilitySizeAttribute, NSAccessibilityPositionAttribute, NSAccessibilityWindowAttribute, NSAccessibilityTopLevelUIElementAttribute, NSAccessibilityRoleAttribute, NSAccessibilityRoleDescriptionAttribute, NSAccessibilityEnabledAttribute, NSAccessibilityFocusedAttribute];
-			});
-			afterAll(^{
-				expectedDefaultAttributes = nil;
-			});
 			it(@"should have the correct default attributes count", ^{
-				[[[sut should] have:[expectedDefaultAttributes count] ] accessibilityAttributeNames];
+				[[[sut should] have:[defaultAttributes count] ] accessibilityAttributeNames];
 			});
 			it(@"should handle default attributes", ^{
-				[[[sut accessibilityAttributeNames] should] containObjectsInArray:expectedDefaultAttributes];
+				[[[sut accessibilityAttributeNames] should] containObjectsInArray:defaultAttributes];
 			});
 		});
 		context(@"attributes", ^{

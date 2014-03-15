@@ -91,7 +91,7 @@
 	[layer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintMidY
 													relativeTo:@"superlayer"
 													 attribute:kCAConstraintMidY]];
-	// accessibility
+
 	[layer setReadableAccessibilityAttribute:NSAccessibilityRoleAttribute withBlock:^id{
 		return NSAccessibilityColorWellRole;
 	}];
