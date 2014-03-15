@@ -96,9 +96,13 @@
 @interface NSView (MMLayerAccessibility)
 
 /**
- *  Set a layer as the root layer of the view. You must set the layer with this method, otherwise the default attributes will not work.
+ *  Set a layer as the root layer of the view. You must set the layer with this method, otherwise the default attributes will not work. It turn
+ *  the view in a layer backed view. Invoked -setWantsLayer:YES on the view.
  *
- *  @param layer a CALayer which will be the backing layer of the custom view.
+ *  @param layer a CALayer which will be the backing layer of the custom view, must not be nil.
+ *  @throws NSInternalInconsistencyException if layer is nil
+ *  @see -setWantsLayer:
+ *  @see -setLayer:
  */
 - (void)setAccessiblityEnabledLayer:(CALayer*)layer;
 
