@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_MMLayerAccessibilityDemo_MMLayerAccessibility : NSObject
+@end
+@implementation PodsDummy_Pods_MMLayerAccessibilityDemo_MMLayerAccessibility
+@end

@@ -20,6 +20,8 @@
 		28AFBE2918CFD59D002F6422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28AFBE2718CFD59D002F6422 /* InfoPlist.strings */; };
 		28AFBE3618CFD663002F6422 /* LayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFBE3518CFD663002F6422 /* LayerView.m */; };
 		28C1EB7118D4C7430058C305 /* NSViewMMLayerAccessibiltySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C1EB7018D4C7430058C305 /* NSViewMMLayerAccessibiltySpec.m */; };
+		D790555E59A141278DA378B5 /* libPods-MMLayerAccessibilityDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A18A10257AE14710A061B51C /* libPods-MMLayerAccessibilityDemoTests.a */; };
+		E37F8FA3CF474227B400DF20 /* libPods-MMLayerAccessibilityDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E862B824F024A21BF72725E /* libPods-MMLayerAccessibilityDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,10 @@
 		28AFBE3418CFD663002F6422 /* LayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerView.h; sourceTree = "<group>"; };
 		28AFBE3518CFD663002F6422 /* LayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerView.m; sourceTree = "<group>"; };
 		28C1EB7018D4C7430058C305 /* NSViewMMLayerAccessibiltySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSViewMMLayerAccessibiltySpec.m; path = ../../Classes/Tests/NSViewMMLayerAccessibiltySpec.m; sourceTree = "<group>"; };
+		2E862B824F024A21BF72725E /* libPods-MMLayerAccessibilityDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MMLayerAccessibilityDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CF922EB3EA4475CB99442D3 /* Pods-MMLayerAccessibilityDemo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMLayerAccessibilityDemo.xcconfig"; path = "Pods/Pods-MMLayerAccessibilityDemo.xcconfig"; sourceTree = "<group>"; };
+		A18A10257AE14710A061B51C /* libPods-MMLayerAccessibilityDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MMLayerAccessibilityDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D974F08035534672AB0C60C5 /* Pods-MMLayerAccessibilityDemoTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MMLayerAccessibilityDemoTests.xcconfig"; path = "Pods/Pods-MMLayerAccessibilityDemoTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AFBE0118CFD59D002F6422 /* Cocoa.framework in Frameworks */,
+				E37F8FA3CF474227B400DF20 /* libPods-MMLayerAccessibilityDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +79,7 @@
 			files = (
 				28AFBE2118CFD59D002F6422 /* Cocoa.framework in Frameworks */,
 				28AFBE2018CFD59D002F6422 /* XCTest.framework in Frameworks */,
+				D790555E59A141278DA378B5 /* libPods-MMLayerAccessibilityDemoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,8 @@
 				28AFBE2418CFD59D002F6422 /* MMLayerAccessibilityDemoTests */,
 				28AFBDFF18CFD59D002F6422 /* Frameworks */,
 				28AFBDFE18CFD59D002F6422 /* Products */,
+				5CF922EB3EA4475CB99442D3 /* Pods-MMLayerAccessibilityDemo.xcconfig */,
+				D974F08035534672AB0C60C5 /* Pods-MMLayerAccessibilityDemoTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +113,8 @@
 				28AFBE0018CFD59D002F6422 /* Cocoa.framework */,
 				28AFBE1F18CFD59D002F6422 /* XCTest.framework */,
 				28AFBE0218CFD59D002F6422 /* Other Frameworks */,
+				2E862B824F024A21BF72725E /* libPods-MMLayerAccessibilityDemo.a */,
+				A18A10257AE14710A061B51C /* libPods-MMLayerAccessibilityDemoTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,9 +181,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28AFBE2E18CFD59D002F6422 /* Build configuration list for PBXNativeTarget "MMLayerAccessibilityDemo" */;
 			buildPhases = (
+				4FE7F30C425646E592F9C4F2 /* Check Pods Manifest.lock */,
 				28AFBDF918CFD59D002F6422 /* Sources */,
 				28AFBDFA18CFD59D002F6422 /* Frameworks */,
 				28AFBDFB18CFD59D002F6422 /* Resources */,
+				0D73D6E3710142B9A3EA0908 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -186,9 +200,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28AFBE3118CFD59D002F6422 /* Build configuration list for PBXNativeTarget "MMLayerAccessibilityDemoTests" */;
 			buildPhases = (
+				408F043FF93E422F9BDFD30D /* Check Pods Manifest.lock */,
 				28AFBE1A18CFD59D002F6422 /* Sources */,
 				28AFBE1B18CFD59D002F6422 /* Frameworks */,
 				28AFBE1C18CFD59D002F6422 /* Resources */,
+				05D1BBA8E6684CE1BFF75550 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,6 +270,69 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05D1BBA8E6684CE1BFF75550 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MMLayerAccessibilityDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0D73D6E3710142B9A3EA0908 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-MMLayerAccessibilityDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		408F043FF93E422F9BDFD30D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4FE7F30C425646E592F9C4F2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		28AFBDF918CFD59D002F6422 /* Sources */ = {
@@ -393,6 +472,7 @@
 		};
 		28AFBE2F18CFD59D002F6422 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CF922EB3EA4475CB99442D3 /* Pods-MMLayerAccessibilityDemo.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -407,6 +487,7 @@
 		};
 		28AFBE3018CFD59D002F6422 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CF922EB3EA4475CB99442D3 /* Pods-MMLayerAccessibilityDemo.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -421,6 +502,7 @@
 		};
 		28AFBE3218CFD59D002F6422 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D974F08035534672AB0C60C5 /* Pods-MMLayerAccessibilityDemoTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MMLayerAccessibilityDemo.app/Contents/MacOS/MMLayerAccessibilityDemo";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -443,6 +525,7 @@
 		};
 		28AFBE3318CFD59D002F6422 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D974F08035534672AB0C60C5 /* Pods-MMLayerAccessibilityDemoTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MMLayerAccessibilityDemo.app/Contents/MacOS/MMLayerAccessibilityDemo";
 				COMBINE_HIDPI_IMAGES = YES;

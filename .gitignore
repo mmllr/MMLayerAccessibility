@@ -19,3 +19,8 @@ DerivedData
 *.hmap
 *.ipa
 
+# Integration script
+oclint.xml
+compile_commands.json
+xcodebuild.log
+

@@ -5,5 +5,5 @@ target "MMLayerAccessibilityDemo" do
 end
 
 target "MMLayerAccessibilityDemoTests", :exclusive => true do
-   pod 'Kiwi/XCTest', '2.2.3'
+   pod 'Kiwi/XCTest', '2.2.4'
 end
