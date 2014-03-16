@@ -139,7 +139,7 @@ const void* kMMLayerAccessibilityParentViewKey = @"mm_AXParentView";
 {
 	NSMutableArray *attributeNames = self.mmAccessibilityAttributes;
 	BOOL hasChildrenAttribute = [attributeNames containsObject:NSAccessibilityChildrenAttribute];
-	
+
 	if (self.sublayers) {
 		if ( !hasChildrenAttribute ) {
 			[attributeNames addObject:NSAccessibilityChildrenAttribute];

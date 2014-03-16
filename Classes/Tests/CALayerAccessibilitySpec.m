@@ -61,7 +61,7 @@ describe(@"CALayer+NSAccessibility", ^{
 			[[sut should] conformToProtocol:@protocol(MMLayerAccessibility)];
 		});
 		context(@"MMLayerAccessibility", ^{
-			context(@"setReadableAccessibilityAttribute:withBlock:", ^{
+			context(NSStringFromSelector(@selector(setReadableAccessibilityAttribute:withBlock:)), ^{
 				it(@"should respond to setReadableAccessibilityAttribute:withBlock", ^{
 					[[sut should] respondToSelector:@selector(setReadableAccessibilityAttribute:withBlock:)];
 				});
@@ -78,7 +78,7 @@ describe(@"CALayer+NSAccessibility", ^{
 					}) should] raiseWithName:NSInternalInconsistencyException];
 				});
 			});
-			context(@"setWritableAccessibilityAttribute:readBlock:writeBlock:", ^{
+			context(NSStringFromSelector(@selector(setWritableAccessibilityAttribute:readBlock:writeBlock:)), ^{
 				it(@"should respond to setWritableAccessibilityAttribute:readBlock:writeBlock:", ^{
 					[[sut should] respondToSelector:@selector(setWritableAccessibilityAttribute:readBlock:writeBlock:)];
 				});
@@ -110,8 +110,8 @@ describe(@"CALayer+NSAccessibility", ^{
 				});
 				
 			});
-			context(@"removeAccessibilityAttribute:", ^{
-				it(@"should respond tor removeAccessibilityAttribute:", ^{
+			context(NSStringFromSelector(@selector(removeAccessibilityAttribute:)), ^{
+				it(@"should respond to removeAccessibilityAttribute:", ^{
 					[[sut should] respondToSelector:@selector(removeAccessibilityAttribute:)];
 				});
 				it(@"should raise an NSInternalInconsistencyException with nil attribute", ^{
@@ -131,7 +131,7 @@ describe(@"CALayer+NSAccessibility", ^{
 					}
 				});
 			});
-			context(@"setAccessibilityAction:withBlock:", ^{
+			context(NSStringFromSelector(@selector(setAccessibilityAction:withBlock:)), ^{
 				it(@"should respond tor setAccessibilityAction:withBlock:", ^{
 					[[sut should] respondToSelector:@selector(setAccessibilityAction:withBlock:)];
 				});
@@ -150,7 +150,7 @@ describe(@"CALayer+NSAccessibility", ^{
 				});
 				
 			});
-			context(@"setParameterizedAccessibilityAttribute:withBlock:", ^{
+			context(NSStringFromSelector(@selector(setParameterizedAccessibilityAttribute:withBlock:)), ^{
 				it(@"should respond to accessibilityParameterizedAttributeNames", ^{
 					[[sut should] respondToSelector:@selector(accessibilityParameterizedAttributeNames)];
 				});
@@ -303,10 +303,10 @@ describe(@"CALayer+NSAccessibility", ^{
 				sublayers = nil;
 			});
 			it(@"should return unignored sublayers for NSAccessibilityChildrenAttribute", ^{
-				[[[ sut accessibilityAttributeValue:NSAccessibilityChildrenAttribute ] should ] equal:sut.sublayers];
+				[[[sut accessibilityAttributeValue:NSAccessibilityChildrenAttribute] should] equal:sut.sublayers];
 			});
 			it(@"should return its unignored parent for NSAccessibilityParentAttribute", ^{
-				[[[sublayers[0] accessibilityAttributeValue:NSAccessibilityParentAttribute] should] equal:NSAccessibilityUnignoredAncestor(sut)];
+				[[[[sublayers firstObject] accessibilityAttributeValue:NSAccessibilityParentAttribute] should] equal:NSAccessibilityUnignoredAncestor(sut)];
 			});
 			it(@"should throw an exception if layer is not associated with a view and has no superlayer when asked for its parent", ^{
 				[[ theBlock(^{
@@ -317,7 +317,7 @@ describe(@"CALayer+NSAccessibility", ^{
 				beforeEach(^{
 					sut.sublayers = nil;
 				});
-				it(@"should not handle the removeObject:NSAccessibilityChildrenAttribute", ^{
+				it(@"should not have the NSAccessibilityChildrenAttribute", ^{
 					[[[sut accessibilityAttributeNames] shouldNot] contain:NSAccessibilityChildrenAttribute];
 				});
 			});
@@ -355,9 +355,62 @@ describe(@"CALayer+NSAccessibility", ^{
 				id axWindow = [sut accessibilityAttributeValue:NSAccessibilityWindowAttribute];
 				[[ axWindow should] equal:window];
 			});
-			it(@"should return its size for NSAccessibilitySizeAttribute", ^{
-				NSValue *expectedSize = [NSValue valueWithSize:[view convertSizeFromBacking:CGSizeMake(400, 400)]];
-				[[[sut accessibilityAttributeValue:NSAccessibilitySizeAttribute] should] equal:expectedSize];
+			context(NSAccessibilitySizeAttribute, ^{
+				__block CGSize expectedSize = CGSizeZero;
+
+				beforeEach(^{
+					expectedSize = sut.bounds.size;
+				});
+				context(@"coordinate space conversions", ^{
+					NSRect expectedRectInLayer = NSMakeRect(0, 0, 400, 400);
+					NSRect expectedRectInWindow = NSMakeRect(50, 50, 400, 400);
+					NSRect expectedRectInScreen = NSMakeRect(200, 200, 400, 400);
+
+					beforeEach(^{
+						window = [NSWindow nullMock];
+						view = [NSView nullMock];
+						[view stub:@selector(layer) andReturn:sut];
+						[view stub:@selector(window) andReturn:window];
+						[view stub:@selector(convertRectFromLayer:) andReturn:theValue(expectedRectInLayer)];
+						[view stub:@selector(convertRect:fromView:) andReturn:theValue(expectedRectInWindow)];
+						[sut stub:@selector(mm_containingView) andReturn:view];
+						[sut stub:@selector(mm_accessibilityParent) andReturn:view];
+						[window stub:@selector(convertRectToScreen:) andReturn:theValue(expectedRectInScreen)];
+					});
+					it(@"should ask the view to convert the layers rect from layer", ^{
+						[[view should] receive:@selector(convertRectFromLayer:) withArguments:theValue(sut.frame)];
+
+						[sut accessibilityAttributeValue:NSAccessibilitySizeAttribute];
+					});
+					it(@"should convert the layers frame to window coordinates", ^{
+						[[view should] receive:@selector(convertRect:fromView:) withArguments:theValue(expectedRectInLayer), [KWNull null]];
+						
+						[sut accessibilityAttributeValue:NSAccessibilitySizeAttribute];
+					});
+					it(@"should convert the window rect to screen coordinares", ^{
+						[[window should] receive:@selector(convertRectToScreen:) withArguments:theValue(expectedRectInWindow)];
+						
+						[sut accessibilityAttributeValue:NSAccessibilitySizeAttribute];
+					});
+				});
+				context(@"when layers contentScale is 1", ^{
+					beforeEach(^{
+						[window stub:@selector(backingScaleFactor) andReturn:theValue(1.)];
+						sut.contentsScale = 1.;
+					});
+					it(@"should return its size for NSAccessibilitySizeAttribute", ^{
+						[[[sut accessibilityAttributeValue:NSAccessibilitySizeAttribute] should] equal:[NSValue valueWithSize:expectedSize]];
+					});
+				});
+				context(@"when layers contentScale is 2", ^{
+					beforeEach(^{
+						[window stub:@selector(backingScaleFactor) andReturn:theValue(2.)];
+						sut.contentsScale = 2.;
+					});
+					it(@"should return its size for NSAccessibilitySizeAttribute", ^{
+						[[[sut accessibilityAttributeValue:NSAccessibilitySizeAttribute] should] equal:[NSValue valueWithSize:expectedSize]];
+					});
+				});
 			});
 			it(@"should return its position for NSAccessibilityPositionAttribute", ^{
 				CGPoint pointInView = [view.layer convertPoint:sut.frame.origin

@@ -48,20 +48,24 @@
 
 #pragma mark - default handlers
 
-- (id)mm_defaultPositionAttributeHandler
+- (NSRect)mm_rectInScreen
 {
 	NSView *containingView = [self mm_containingView];
-	CGPoint pointInView = [containingView.layer convertPoint:self.frame.origin
-												   fromLayer:self.superlayer];
-	NSPoint windowPoint = [containingView convertPoint:NSPointFromCGPoint(pointInView)
-												toView:nil ];
-	return [ NSValue valueWithPoint:[[containingView window ] convertRectToScreen:NSMakeRect(windowPoint.x, windowPoint.y, 1,1)].origin];
+	CGRect rectInLayer = [containingView.layer convertRect:self.frame
+												fromLayer:self.superlayer];
+	NSRect windowRect = [containingView convertRect:[containingView convertRectFromLayer:rectInLayer]
+										   fromView:nil];
+	return [[containingView window] convertRectToScreen:windowRect];
+}
+
+- (id)mm_defaultPositionAttributeHandler
+{
+	return [NSValue valueWithPoint:[self mm_rectInScreen].origin];
 }
 
 - (id)mm_defaultSizeAttributeHandler
 {
-	NSView *containingView = [self mm_containingView];
-	return [NSValue valueWithSize:[containingView convertSizeFromBacking:self.bounds.size]];
+	return [NSValue valueWithSize:[self mm_rectInScreen].size];
 }
 
 - (id)mm_defaultParentAttributeHandler

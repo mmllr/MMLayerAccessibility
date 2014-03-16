@@ -205,7 +205,7 @@
 }
 
 
-- (void)setWritableAccessibilityAttribute:(NSString*)attribute readBlock:(id(^)(void))getter writeBlock:(void(^)(id value))setter
+- (void)setWritableAccessibilityAttribute:(NSString*)attribute readBlock:(id(^)(void))getter writeBlock:(void(^)(id))setter
 {
 	NSParameterAssert(getter);
 	NSParameterAssert(setter);
