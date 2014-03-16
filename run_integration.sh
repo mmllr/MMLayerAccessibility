@@ -64,7 +64,7 @@ GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES \
 clean test
 
 echo "[*] Generating code-coverage results"
-scripts/gcovr --gcov-executable=${GCOVCMD} -x -o ${WORKSPACE}/build/test-reports/coverage.xml --root=. --exclude='(.*Spec\.m)|(Pods/*)|(.*Test\.m)|(.*.h)'
+scripts/gcovr --gcov-executable=${GCOVCMD} -x -o ${WORKSPACE}/build/test-reports/coverage.xml --root=. --exclude='(.*Spec\.m)|(Pods/*)|(.*Test\.m)|(.*.h)|Example/*'
 
 echo "[*] Performing code quality analysis"
 
