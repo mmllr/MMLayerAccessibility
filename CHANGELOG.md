@@ -1,5 +1,9 @@
 # MMLayerAccessibility CHANGELOG
 
+## 0.1.2
+
+- fixed bug reporting wrong size on retina displays
+
 ## 0.1.1
 
 - improved documentation
