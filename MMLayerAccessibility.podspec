@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "MMLayerAccessibility"
-  s.version          = "0.1.2"
+  s.version          = "0.1.3"
   s.summary          = "A framework for adding NSAccessibility support to CALayer"
   s.homepage         = "https://github.com/mmllr/MMLayerAccessibility"
   s.screenshots      = "https://github.com/mmllr/MMLayerAccessibility.git/Resources/screenshot01.png"
