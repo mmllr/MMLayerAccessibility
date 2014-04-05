@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "MMLayerAccessibility"
-  s.version          = "0.1.1"
+  s.version          = "0.1.3"
   s.summary          = "A framework for adding NSAccessibility support to CALayer"
   s.homepage         = "https://github.com/mmllr/MMLayerAccessibility"
   s.screenshots      = "https://github.com/mmllr/MMLayerAccessibility.git/Resources/screenshot01.png"
@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
   s.ios.exclude_files = 'Classes/osx'
   s.osx.exclude_files = 'Classes/ios'
   s.exclude_files = 'Classes/**/*Spec.{h,m}'
-  s.public_header_files = 'Classes/CALayer+NSAccessibility.h'
+  s.public_header_files = 'Classes/osx/*.h'
   s.frameworks = 'QuartzCore'
 end

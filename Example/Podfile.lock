@@ -4,7 +4,7 @@ PODS:
   - Kiwi/XCTest (2.2.4):
     - Kiwi/ARC
     - Kiwi/NonARC
-  - MMLayerAccessibility (0.1.1)
+  - MMLayerAccessibility (0.1.3)
 
 DEPENDENCIES:
   - Kiwi/XCTest (= 2.2.4)
@@ -16,6 +16,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Kiwi: d60d7498b640a16f58b01925fc3c8d7c4d809f66
-  MMLayerAccessibility: 921242cd6a4252757cf0f10dd5c251aa9287042e
+  MMLayerAccessibility: 485bb98af7e26a9c6d9efae65904437738fff51a
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.31.1

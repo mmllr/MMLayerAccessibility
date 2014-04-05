@@ -33,7 +33,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
 #import <CALayer+NSAccessibility.h>
-#import <CALayer+MMLayerAccessibilityPrivate.h>
+#import "CALayer+MMLayerAccessibilityPrivate.h"
 
 SPEC_BEGIN(CALayerAccessibilitySpec)
 
