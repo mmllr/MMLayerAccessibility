@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		284778DC18CFDEF100BF4EE7 /* CALayerAccessibilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 284778DB18CFDEF100BF4EE7 /* CALayerAccessibilitySpec.m */; };
+		285A851218F177B400F0CFE8 /* MMCodeCoverageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A850E18F177B400F0CFE8 /* MMCodeCoverageTests.m */; };
+		285A851418F177BE00F0CFE8 /* NSApplication+MMCodeCoverageFixer.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A851018F177B400F0CFE8 /* NSApplication+MMCodeCoverageFixer.m */; };
 		28AFBE0118CFD59D002F6422 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28AFBE0018CFD59D002F6422 /* Cocoa.framework */; };
 		28AFBE0B18CFD59D002F6422 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28AFBE0918CFD59D002F6422 /* InfoPlist.strings */; };
 		28AFBE0D18CFD59D002F6422 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28AFBE0C18CFD59D002F6422 /* main.m */; };
@@ -36,6 +38,10 @@
 
 /* Begin PBXFileReference section */
 		284778DB18CFDEF100BF4EE7 /* CALayerAccessibilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CALayerAccessibilitySpec.m; path = ../../Classes/Tests/CALayerAccessibilitySpec.m; sourceTree = "<group>"; };
+		285A850D18F177B400F0CFE8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		285A850E18F177B400F0CFE8 /* MMCodeCoverageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCodeCoverageTests.m; sourceTree = "<group>"; };
+		285A850F18F177B400F0CFE8 /* NSApplication+MMCodeCoverageFixer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+MMCodeCoverageFixer.h"; sourceTree = "<group>"; };
+		285A851018F177B400F0CFE8 /* NSApplication+MMCodeCoverageFixer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+MMCodeCoverageFixer.m"; sourceTree = "<group>"; };
 		28AFBDFD18CFD59D002F6422 /* MMLayerAccessibilityDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMLayerAccessibilityDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28AFBE0018CFD59D002F6422 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		28AFBE0318CFD59D002F6422 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -86,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		285A850C18F177B400F0CFE8 /* MMTestingHelper */ = {
+			isa = PBXGroup;
+			children = (
+				285A850D18F177B400F0CFE8 /* LICENSE */,
+				285A850E18F177B400F0CFE8 /* MMCodeCoverageTests.m */,
+				285A850F18F177B400F0CFE8 /* NSApplication+MMCodeCoverageFixer.h */,
+				285A851018F177B400F0CFE8 /* NSApplication+MMCodeCoverageFixer.m */,
+			);
+			path = MMTestingHelper;
+			sourceTree = SOURCE_ROOT;
+		};
 		28AFBDF418CFD59D002F6422 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +175,7 @@
 		28AFBE2418CFD59D002F6422 /* MMLayerAccessibilityDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				285A850C18F177B400F0CFE8 /* MMTestingHelper */,
 				284778DB18CFDEF100BF4EE7 /* CALayerAccessibilitySpec.m */,
 				28C1EB7018D4C7430058C305 /* NSViewMMLayerAccessibiltySpec.m */,
 				28AFBE2518CFD59D002F6422 /* Supporting Files */,
@@ -340,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AFBE3618CFD663002F6422 /* LayerView.m in Sources */,
+				285A851418F177BE00F0CFE8 /* NSApplication+MMCodeCoverageFixer.m in Sources */,
 				28AFBE1418CFD59D002F6422 /* AppDelegate.m in Sources */,
 				28AFBE0D18CFD59D002F6422 /* main.m in Sources */,
 			);
@@ -350,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				284778DC18CFDEF100BF4EE7 /* CALayerAccessibilitySpec.m in Sources */,
+				285A851218F177B400F0CFE8 /* MMCodeCoverageTests.m in Sources */,
 				28C1EB7118D4C7430058C305 /* NSViewMMLayerAccessibiltySpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
